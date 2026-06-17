@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTTP 503 Service Unavailable – Meaning, Causes &amp; How to Fix</title>
+    <meta name="description" content="What HTTP status code 503 (Service Unavailable) means: The server is not ready to handle the request, often due to maintenance or overload. Common causes and how to fix it.">
+    <link rel="canonical" href="https://statuscode.dev/503.html">
+    <meta property="og:title" content="HTTP 503 Service Unavailable – Meaning, Causes &amp; How to Fix">
+    <meta property="og:description" content="What HTTP status code 503 (Service Unavailable) means: The server is not ready to handle the request, often due to maintenance or overload. Common causes and how to fix it.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://statuscode.dev/503.html">
+    <meta name="robots" content="index,follow">
+    <!-- ADSENSE_HEAD: uncomment after AdSense approval and set your pub id -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+    <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "TechArticle", "headline": "HTTP 503 Service Unavailable – Meaning, Causes & How to Fix", "description": "The server is not ready to handle the request, often due to maintenance or overload.", "about": {"@type": "Thing", "name": "HTTP 503 Service Unavailable"}, "author": {"@type": "Organization", "name": "StatusCode.dev"}, "mainEntityOfPage": "https://statuscode.dev/503.html"}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does HTTP 503 mean?", "acceptedAnswer": {"@type": "Answer", "text": "The server is not ready to handle the request, often due to maintenance or overload."}}, {"@type": "Question", "name": "How do I fix a 503 Service Unavailable error?", "acceptedAnswer": {"@type": "Answer", "text": "Scale up capacity, finish maintenance, or retry after the Retry-After interval."}}]}]</script>
+    <style>
+      :root{--fg:#1a1a2e;--mut:#5b6270;--acc:#2d6cdf;--bg:#fff;--card:#f6f8fc;--line:#e3e8f0}
+      *{box-sizing:border-box}
+      body{margin:0;font:16px/1.6 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--fg);background:var(--bg)}
+      header,main,footer{max-width:860px;margin:0 auto;padding:0 20px}
+      header{padding-top:22px}
+      a{color:var(--acc);text-decoration:none} a:hover{text-decoration:underline}
+      .brand{font-weight:700;font-size:20px}
+      nav{font-size:14px;color:var(--mut);margin:6px 0 18px}
+      h1{font-size:1.9rem;line-height:1.2;margin:.2em 0}
+      .code-badge{display:inline-block;font-size:.8rem;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--acc);color:#fff;vertical-align:middle}
+      .lead{font-size:1.12rem;color:var(--mut)}
+      .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:16px 0}
+      .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0}
+      .grid a{display:block;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+      .grid .n{font-weight:700} .grid .d{font-size:.82rem;color:var(--mut)}
+      .meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+      .pill{font-size:.78rem;padding:2px 9px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--mut)}
+      .ad{border:1px dashed #c6cfdd;border-radius:10px;min-height:90px;display:flex;align-items:center;justify-content:center;margin:22px 0;background:repeating-linear-gradient(45deg,#fafbfe,#fafbfe 10px,#f2f5fb 10px,#f2f5fb 20px)}
+      .ad-label{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:#9aa3b2}
+      .aff{font-size:.9rem;margin:6px 0}
+      table{border-collapse:collapse;width:100%;font-size:.95rem}
+      td,th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}
+      footer{color:var(--mut);font-size:.85rem;border-top:1px solid var(--line);margin-top:40px;padding:20px 20px 50px}
+    </style>
+</head>
+<body>
+<header>
+  <div class="brand"><a href="/">StatusCode.dev</a></div>
+  <nav><a href="/">Home</a> &rsaquo; <a href="/category/5xx.html">5xx Server Error</a> &rsaquo; 503</nav>
+</header>
+<main>
+  <h1><span class="code-badge">503</span> Service Unavailable</h1>
+  <p class="lead">The server is not ready to handle the request, often due to maintenance or overload.</p>
+  <div class="meta">
+    <span class="pill">Class: 5xx Server Error</span>
+    <span class="pill">Cacheable: no</span>
+    <span class="pill">Safe to retry: yes</span>
+  </div>
+
+  <!-- ADSENSE_SLOT: paste your AdSense auto-ad or in-article unit here -->
+<div class="ad" aria-hidden="true" data-ad-placeholder="true">
+  <!-- ADSENSE_SLOT_START -->
+  <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+       data-ad-slot="0000000000" data-ad-format="auto"></ins> -->
+  <span class="ad-label">Advertisement</span>
+  <!-- ADSENSE_SLOT_END -->
+</div>
+
+  <div class="card">
+    <h2>When you see HTTP 503</h2>
+    <p>The server is overloaded or down for maintenance. A Retry-After header may be present.</p>
+  </div>
+  <div class="card">
+    <h2>How to fix 503 Service Unavailable</h2>
+    <p>Scale up capacity, finish maintenance, or retry after the Retry-After interval.</p>
+  </div>
+
+    <div class="card">
+      <!-- AFFILIATE_BLOCK: swap the ref codes in data.json for your own -->
+      <strong>Recommended: ship faster with managed hosting.</strong>
+      <p class="aff">→ <a rel="sponsored nofollow" href="https://www.digitalocean.com/?refcode=YOUR_REF">Try DigitalOcean (free $200 credit)</a></p>
+      <p class="aff">→ <a rel="sponsored nofollow" href="https://www.datadoghq.com/?ref=YOUR_REF">Datadog APM — trace 5xx errors in prod</a></p>
+      <p class="aff">→ <a rel="sponsored nofollow" href="https://www.postman.com/?ref=YOUR_REF">Postman — test these status codes</a></p>
+    </div>
+
+  <h2>Other 5xx status codes</h2>
+  <div class="grid">
+      <a href="/500.html"><span class="n">500</span><span class="d">Internal Server Error</span></a>
+      <a href="/501.html"><span class="n">501</span><span class="d">Not Implemented</span></a>
+      <a href="/502.html"><span class="n">502</span><span class="d">Bad Gateway</span></a>
+      <a href="/504.html"><span class="n">504</span><span class="d">Gateway Timeout</span></a>
+      <a href="/505.html"><span class="n">505</span><span class="d">HTTP Version Not Supported</span></a>
+      <a href="/511.html"><span class="n">511</span><span class="d">Network Authentication Required</span></a>
+  </div>
+  <p><a href="/category/5xx.html">See all 5xx codes &rarr;</a> &middot; <a href="/">All HTTP status codes</a></p>
+</main>
+<footer>
+  <p>StatusCode.dev — The fast, complete HTTP status code reference for developers.</p>
+  <p>Data compiled from the HTTP specification (RFC 9110 et al.). &copy; 2026.
+     <a href="/sitemap.xml">Sitemap</a></p>
+</footer>
+</body>
+</html>
