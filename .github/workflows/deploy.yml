@@ -45,10 +45,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Delete this block if the project lives at the repo ROOT (no contentsite/).
-    defaults:
-      run:
-        working-directory: contentsite
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -64,8 +60,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # build.py already emits a clean publishable dir at contentsite/public
-          path: contentsite/public
+          path: public
 
   deploy:
     needs: build
