@@ -21,6 +21,14 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(ROOT, "data.json")
 OUT = os.path.join(ROOT, "public")
 
+# Path prefix for internal links. GitHub Pages project sites serve under
+# /<repo>/ (e.g. /contentsite), so internal hrefs must be prefixed or they 404.
+# Set data.json "path_prefix" to "" once a custom domain serves from root.
+_PP = os.environ.get("PATH_PREFIX")
+def _prefix(site):
+    p = _PP if _PP is not None else site.get("path_prefix", "")
+    return p.rstrip("/")
+
 # ---- AdSense / affiliate placeholders (clearly marked) -----------------------
 # The human inserts their real AdSense code where ADSENSE_SLOT appears, and swaps
 # the affiliate ref codes in data.json. Until then these are inert placeholders.
@@ -128,8 +136,9 @@ def affiliate_block(site):
 
 
 def header_html(site, breadcrumb):
+    pp = _prefix(site)
     return f"""<header>
-  <div class="brand"><a href="/">{esc(site['name'])}</a></div>
+  <div class="brand"><a href="{pp}/">{esc(site['name'])}</a></div>
   <nav>{breadcrumb}</nav>
 </header>"""
 
@@ -139,7 +148,7 @@ def footer_html(site):
     return f"""<footer>
   <p>{esc(site['name'])} \u2014 {esc(site['tagline'])}.</p>
   <p>Data compiled from the HTTP specification (RFC 9110 et al.). &copy; {yr}.
-     <a href="/sitemap.xml">Sitemap</a></p>
+     <a href="{_prefix(site)}/sitemap.xml">Sitemap</a></p>
 </footer>"""
 
 
@@ -153,13 +162,14 @@ def build_code_page(site, c):
     url = f"{site['base_url']}/{code}.html"
     title = f"HTTP {code} {c['name']} \u2013 Meaning, Causes & How to Fix"
     desc = f"What HTTP status code {code} ({c['name']}) means: {c['summary']} Common causes and how to fix it."
-    breadcrumb = (f'<a href="/">Home</a> &rsaquo; '
-                  f'<a href="/category/{cls}.html">{cls} {esc(cat_short)}</a> '
+    pp = _prefix(site)
+    breadcrumb = (f'<a href="{pp}/">Home</a> &rsaquo; '
+                  f'<a href="{pp}/category/{cls}.html">{cls} {esc(cat_short)}</a> '
                   f'&rsaquo; {code}')
 
     related = [x for x in site["codes"] if klass(x["code"]) == cls and x["code"] != code][:6]
     related_html = "\n".join(
-        f'      <a href="/{r["code"]}.html"><span class="n">{r["code"]}</span>'
+        f'      <a href="{pp}/{r["code"]}.html"><span class="n">{r["code"]}</span>'
         f'<span class="d">{esc(r["name"])}</span></a>'
         for r in related
     )
@@ -211,7 +221,7 @@ def build_code_page(site, c):
   <div class="grid">
 {related_html}
   </div>
-  <p><a href="/category/{cls}.html">See all {cls} codes &rarr;</a> &middot; <a href="/">All HTTP status codes</a></p>
+  <p><a href="{pp}/category/{cls}.html">See all {cls} codes &rarr;</a> &middot; <a href="{pp}/">All HTTP status codes</a></p>
 </main>
 {footer_html(site)}"""
     return page_shell(site, title=title, description=desc, canonical=url,
@@ -224,10 +234,11 @@ def build_category_page(site, cls):
     short = cat_desc.split(" \u2013 ")[0]
     title = f"{cls} HTTP Status Codes \u2013 {short} (Full List)"
     desc = f"Complete list of {cls} HTTP status codes. {cat_desc}."
-    breadcrumb = f'<a href="/">Home</a> &rsaquo; {cls} {esc(short)}'
+    pp = _prefix(site)
+    breadcrumb = f'<a href="{pp}/">Home</a> &rsaquo; {cls} {esc(short)}'
     codes = [c for c in site["codes"] if klass(c["code"]) == cls]
     cards = "\n".join(
-        f'      <a href="/{c["code"]}.html"><span class="n">{c["code"]} {esc(c["name"])}</span>'
+        f'      <a href="{pp}/{c["code"]}.html"><span class="n">{c["code"]} {esc(c["name"])}</span>'
         f'<span class="d">{esc(c["summary"][:70])}\u2026</span></a>'
         for c in codes
     )
@@ -246,7 +257,7 @@ def build_category_page(site, cls):
   <div class="grid">
 {cards}
   </div>
-  <p><a href="/">&larr; All HTTP status codes</a></p>
+  <p><a href="{pp}/">&larr; All HTTP status codes</a></p>
 </main>
 {footer_html(site)}"""
     return page_shell(site, title=title, description=desc, canonical=url,
@@ -254,6 +265,7 @@ def build_category_page(site, cls):
 
 
 def build_index(site):
+    pp = _prefix(site)
     url = site["base_url"] + "/"
     title = f"{site['name']} \u2013 HTTP Status Codes Reference (Complete List)"
     desc = ("Complete, fast HTTP status code reference. Look up the meaning, common "
@@ -264,13 +276,13 @@ def build_index(site):
         if not codes:
             continue
         cards = "\n".join(
-            f'      <a href="/{c["code"]}.html"><span class="n">{c["code"]}</span>'
+            f'      <a href="{pp}/{c["code"]}.html"><span class="n">{c["code"]}</span>'
             f'<span class="d">{esc(c["name"])}</span></a>'
             for c in codes
         )
         short = cat_desc.split(" \u2013 ")[0]
         sections.append(
-            f'  <h2 id="{cls}"><a href="/category/{cls}.html">{cls} \u2013 {esc(short)}</a></h2>\n'
+            f'  <h2 id="{cls}"><a href="{pp}/category/{cls}.html">{cls} \u2013 {esc(short)}</a></h2>\n'
             f'  <p style="color:#5b6270;margin-top:0">{esc(cat_desc)}.</p>\n'
             f'  <div class="grid">\n{cards}\n  </div>'
         )

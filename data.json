@@ -2,7 +2,8 @@
   "site": {
     "name": "StatusCode.dev",
     "tagline": "The fast, complete HTTP status code reference for developers",
-    "base_url": "https://statuscode.dev",
+    "base_url": "https://iiiiamyoung.github.io/contentsite",
+    "path_prefix": "/contentsite",
     "author": "StatusCode.dev",
     "adsense_publisher_id": "ca-pub-XXXXXXXXXXXXXXXX",
     "affiliate_blurb": "Recommended: ship faster with managed hosting."
